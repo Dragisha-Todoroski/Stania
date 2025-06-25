@@ -1,6 +1,9 @@
 # Ignore Visual Studio folder
 .vs/
 
+# Ignore Git internal files
+FETCH_HEAD
+
 # Build output folders
 bin/
 obj/
