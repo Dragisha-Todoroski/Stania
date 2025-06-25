@@ -1,0 +1,20 @@
+# Ignore Visual Studio folder
+.vs/
+
+# Build output folders
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+
+# OS and IDE
+.DS_Store
+Thumbs.db
+.idea/
+*.log
+
+# Temporary or backup files
+*.tmp
+*.bak
