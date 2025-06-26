@@ -1,4 +1,3 @@
-using StaniaAPI.DataAccess;
 using StaniaAPI.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
