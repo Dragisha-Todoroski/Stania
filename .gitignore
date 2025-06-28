@@ -21,3 +21,8 @@ Thumbs.db
 # Temporary or backup files
 *.tmp
 *.bak
+
+node_modules
+.env
+*.sql
+*.psql
