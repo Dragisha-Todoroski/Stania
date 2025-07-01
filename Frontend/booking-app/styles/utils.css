@@ -1,3 +1,45 @@
 .wrapper {
-  @apply max-w-[1880px] w-full mx-auto px-5;
+  @apply max-w-full w-full mx-auto px-4 md:px-5;
+}
+.title {
+  @apply font-semibold text-3xl;
+}
+/* Colors */
+/* === BACKGROUND === */
+.bg-body {
+  @apply bg-[#202124]; /* Google dark grey */
+}
+.bg-card {
+  @apply bg-[#27272A]; /* Soft dark lift, Tailwind zinc-800 */
+}
+.bg-sidebar {
+  @apply bg-[#27272A]; /* Same as card for consistency */
+}
+/* === TEXT === */
+.text-primary {
+  @apply text-[#E5E7EB]; /* Light text, gray-200 */
+}
+.text-secondary {
+  @apply text-[#9CA3AF]; /* Muted labels, gray-400 */
+}
+.text-accent {
+  @apply text-[#3B82F6]; /* Accent blue, blue-500, or pick your brand color */
+}
+/* === BORDER / DIVIDER === */
+.border-soft {
+  @apply border-[#3F3F46]; /* zinc-700, soft border */
+}
+.border-strong {
+  @apply border-[#4B5563]; /* gray-600, slightly higher contrast */
+}
+/* === ACCENT COLORS === */
+.bg-accent {
+  @apply bg-[#3B82F6]; /* Accent button background */
+}
+.text-accent-hover {
+  @apply text-[#60A5FA]; /* Accent hover color, blue-400 */
+}
+/* === UTILITY === */
+.shadow-soft {
+  @apply shadow-lg shadow-black/20;
 }
