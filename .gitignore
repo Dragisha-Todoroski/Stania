@@ -43,6 +43,8 @@ node_modules
 
 # next.js
 /.next/
+Frontend/booking-app/.next
+**/.next
 /out/
 
 # production
