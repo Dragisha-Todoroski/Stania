@@ -1,32 +1,4 @@
-# Ignore Visual Studio folder
-.vs/
-
-# Ignore Git internal files
-FETCH_HEAD
-
-# Build output folders
-bin/
-obj/
-
-# User-specific files
-*.user
-*.suo
-
-# OS and IDE
-.DS_Store
-Thumbs.db
-.idea/
-*.log
-
-# Temporary or backup files
-*.tmp
-*.bak
-
-node_modules
-.env
-*.sql
-*.psql
-
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /node_modules
