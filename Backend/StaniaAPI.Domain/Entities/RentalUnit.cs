@@ -1,11 +1,8 @@
 ﻿using StaniaAPI.Services.Enums;
-using System;
-using System.Collections.Generic;
+using StaniaAPI.Services.Enums.RentalUnitEnums;
+using StaniaAPI.Services.ServiceHelpers.CustomValidators;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StaniaAPI.Domain.Entities
 {
@@ -25,26 +22,28 @@ namespace StaniaAPI.Domain.Entities
         [StringLength(1000, ErrorMessage = "{0} can't be longer than 1000 characters.")]
         public string? Description { get; set; }
 
+
         // Categorization
 
-        [Required(ErrorMessage = "{0} is required.")]
-        [EnumDataType(typeof(RentalUnitType))]
+        [EnumDataType(typeof(RentalUnitType), ErrorMessage = "Invalid rental unit type.")]
         public RentalUnitType RentalUnitType { get; set; }
 
-        [Required(ErrorMessage = "{0} is required.")]
-        [EnumDataType(typeof(RentalUnitTerm))]
+        [EnumDataType(typeof(RentalUnitTerm), ErrorMessage = "Invalid rental unit term.")]
         public RentalUnitTerm RentalUnitTerm { get; set; }
+
 
         // Common characteristics
 
-        [Required(ErrorMessage = "{0} is required.")]
+        [Range(0, int.MaxValue, ErrorMessage = "Number of bedrooms must be non-negative.")]
         public int BedroomCount { get; set; } = 0;
 
-        [Required(ErrorMessage = "{0} is required.")]
-        public int BathroomCount { get; set; } = 1;
+        [Range(1, double.MaxValue, ErrorMessage = "Number of bathrooms must be at least 1.")]
+        [BathroomCountIncrement]
+        public double BathroomCount { get; set; } = 1;
 
-        [Required(ErrorMessage = "{0} is required.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Square footage must be at least 1.")]
         public int SquareFootage { get; set; }
+
 
         // Optional features
 
@@ -54,30 +53,39 @@ namespace StaniaAPI.Domain.Entities
         [Range(0, int.MaxValue, ErrorMessage = "Floor number must be non-negative.")]
         public int? FloorNumber { get; set; } // Primarily for studios/apartments/rooms
 
-        [Required(ErrorMessage = "{0} is required.")]
-        [EnumDataType(typeof(ParkingOption))]
-        public ParkingOption ParkingOption { get; set; } = ParkingOption.NoParking;
+        [EnumDataType(typeof(ParkingOption), ErrorMessage = "Invalid parking option.")]
+        public ParkingOption ParkingOption { get; set; }
 
-        [EnumDataType(typeof(ParkingCost))]
+        [EnumDataType(typeof(ParkingCost), ErrorMessage = "Invalid parking cost.")]
         public ParkingCost? ParkingCost { get; set; } // Only used if ParkingOption is not NoParking
         public bool? HasGarage { get; set; }
         public bool? HasGarden { get; set; }
 
+
         // Location & pricing
 
-        [Required(ErrorMessage = "{0} is required.")]
-        public string Address { get; set; } = null!;
+        public Guid RegionId { get; set; }
+
+        [ForeignKey(nameof(RegionId))]
+        public Region? Region { get; set; }
 
         [Required(ErrorMessage = "{0} is required.")]
+        [Column(TypeName = "varchar(500)")]
+        [MinLength(1, ErrorMessage = "{0} must not be empty.")]
+        [StringLength(500, ErrorMessage = "{0} can't be longer than 500 characters.")]
+        public string Address { get; set; } = string.Empty;
+
+        [Column(TypeName = "decimal(18,2)")]
         [Range(typeof(decimal), "0", "79228162514264337593543950335", ErrorMessage = "Price must be non-negative.")]
         public decimal Price { get; set; }
 
-        [Required(ErrorMessage = "{0} is required.")]
-        [MinLength(1, ErrorMessage = "{0} must not be empty.")]
-        [Column(TypeName = "varchar(15)")]
-        [StringLength(15, ErrorMessage = "{0} can't be longer than 15 characters.")]
-        public string Currency { get; set; } = "EUR";
+        [EnumDataType(typeof(Currency), ErrorMessage = "Invalid currency.")]
+        public Currency Currency { get; set; }
+
+
+        // Auto-generated timestamps
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }
