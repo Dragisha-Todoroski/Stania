@@ -15,6 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 DependencyInjectionHelper.InjectDbContext(builder.Services, builder.Configuration);
+DependencyInjectionHelper.InjectServices(builder.Services);
 
 var app = builder.Build();
 
