@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StaniaAPI.Domain.Entities;
-using StaniaAPI.Services.Enums;
+using StaniaAPI.Services.Enums.RentalUnitEnums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +35,9 @@ namespace StaniaAPI.DataAccess
                         y => y.HasValue ? y.Value.ToString() : null,
                         y => y != null ? Enum.Parse<ParkingCost>(y) : (ParkingCost?)null
                     );
+
+                entity.Property(x => x.Currency)
+                    .HasConversion<string>();
             });
         }
     }

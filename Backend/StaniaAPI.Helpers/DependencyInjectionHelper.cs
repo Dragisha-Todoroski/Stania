@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StaniaAPI.DataAccess;
+using StaniaAPI.Services.Abstractions.RentalUnitAbstractions;
+using StaniaAPI.Services.Implementations.RentalUnitImplementations;
 
 namespace StaniaAPI.Helpers
 {
@@ -13,6 +15,11 @@ namespace StaniaAPI.Helpers
             {
                 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
             });
+        }
+
+        public static void InjectServices(IServiceCollection services)
+        {
+            services.AddScoped<IRentalUnitService, RentalUnitService>();
         }
     }
 }

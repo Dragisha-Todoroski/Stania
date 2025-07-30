@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StaniaAPI.Services.Enums
+namespace StaniaAPI.Services.Enums.RentalUnitEnums
 {
     public enum ParkingOption
     {
