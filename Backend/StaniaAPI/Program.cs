@@ -1,4 +1,4 @@
-using StaniaAPI.Helpers;
+using StaniaAPI;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
