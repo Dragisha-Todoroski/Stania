@@ -1,5 +1,8 @@
+body {
+ @apply bg-[#202124] text-[#E5E7EB];
+}
 .wrapper {
-  @apply max-w-full w-full mx-auto px-4 md:px-5;
+  @apply max-w-[1880px] w-full mx-auto px-4 md:px-5;
 }
 .title {
   @apply font-semibold text-3xl;
@@ -42,4 +45,44 @@
 /* === UTILITY === */
 .shadow-soft {
   @apply shadow-lg shadow-black/20;
+}
+
+/* Cool Underline */
+
+.underline-fancy {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 1px;
+  cursor: pointer;
+}
+
+.underline-fancy::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.underline-fancy:hover::before {
+  transform: scaleX(1);
+}
+
+/* Loader */
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-stroke {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: draw 0.6s ease-out forwards;
 }

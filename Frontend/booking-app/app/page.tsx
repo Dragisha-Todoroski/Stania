@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
-import Header from "../components/layout/Header";
+import Hero from "@/components/layout/Hero";
+import Listings from "@/components/layout/Listings";
 
 export const metadata: Metadata = {
-  title: "Booking App",
-  description: "Booking App",
+  title: "Stania",
+  description: "Stania - Booking App Designed and Developed by: Dragisha Todoroski, Daniel Cikora and Teodora Dumitru.",
 };
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <Hero />
+      <Listings />
     </>
   );
 }

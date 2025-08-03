@@ -1,17 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
 @import "./normalize.css";
+
+@import "tailwindcss";
 @import "./utils.css";
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   border: 0;
-  margin: 0;
-  padding: 0;
 }
+
 body {
-  font-family: "Open Sans", sans-serif;
-  background-color: #202124;
-  color: #E5E7EB;
+  font-family: "Libre Caslon Text", serif;
+  scroll-behavior: smooth;
 }
