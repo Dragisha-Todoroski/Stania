@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -9,7 +10,7 @@ using StaniaAPI.Services.DTOs.RentalUnitDTOs;
 
 namespace StaniaAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class RentalUnitsController : ControllerBase
     {
@@ -33,7 +34,7 @@ namespace StaniaAPI.Controllers
             var rentalUnit = await _rentalUnitService.GetByIdAsync(id);
 
             if (rentalUnit == null)
-                return NotFound("Rental unit with given ID was not found.");
+                return NotFound($"Rental unit with ID: {id} not found.");
 
             return Ok(rentalUnit);
         }
@@ -49,13 +50,23 @@ namespace StaniaAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAsync(Guid id, [FromBody] RentalUnitUpdateRequest updateRequest)
         {
-            throw new NotImplementedException();
+            var updatedRentalUnit = await _rentalUnitService.UpdateAsync(id, updateRequest);
+
+            if (updatedRentalUnit == null)
+                return NotFound($"Rental unit with ID: {id} not found.");
+
+            return Ok(updatedRentalUnit);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var isRentalUnitDeleted = await _rentalUnitService.DeleteAsync(id);
+
+            if (!isRentalUnitDeleted)
+                return NotFound($"Rental unit with ID: {id} not found.");
+                
+            return NoContent();
         }
     }
 }
