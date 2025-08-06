@@ -32,7 +32,7 @@ export default function Header() {
   <header
    className={`fixed top-0 py-4 left-0 right-0 z-50 mx-auto w-full transition-all duration-500 ease-in-out transform ${
     scrolled || menuOpen
-     ? 'bg-white/60 backdrop-blur-md top-4 rounded-xl text-gray-800 shadow-md max-w-[1200px]'
+     ? 'bg-white/60 backdrop-blur-md md:top-4 md:rounded-xl text-gray-800 shadow-md md:max-w-[1200px]'
      : 'bg-transparent max-w-full'
    }`}
   >
