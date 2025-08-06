@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\StaniaAPI.DataAccess\StaniaAPI.DataAccess.csproj" />
     <ProjectReference Include="..\StaniaAPI.Helpers\StaniaAPI.Helpers.csproj" />
+    <ProjectReference Include="..\StaniaAPI.Services\StaniaAPI.Services.csproj" />
   </ItemGroup>
 
 </Project>

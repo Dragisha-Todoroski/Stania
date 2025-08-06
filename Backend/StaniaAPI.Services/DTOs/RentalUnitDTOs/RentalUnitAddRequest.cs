@@ -1,6 +1,6 @@
-﻿using StaniaAPI.Services.Enums;
-using StaniaAPI.Services.Enums.RentalUnitEnums;
-using StaniaAPI.Services.ServiceHelpers.CustomValidators;
+﻿using StaniaAPI.Domain.Enums;
+using StaniaAPI.Domain.Enums.RentalUnitEnums;
+using StaniaAPI.Helpers.CustomValidators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
