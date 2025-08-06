@@ -1,4 +1,5 @@
-using StaniaAPI.Helpers;
+using StaniaAPI;
+using StaniaAPI.Middlewares;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +28,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<CustomExceptionHandlingMiddleware>();
+
+app.UseRouting();
 
 app.UseAuthorization();
 

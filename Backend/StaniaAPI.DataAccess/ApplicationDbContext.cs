@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StaniaAPI.Domain.Entities;
-using StaniaAPI.Services.Enums.RentalUnitEnums;
+using StaniaAPI.Domain.Enums.RentalUnitEnums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +14,8 @@ namespace StaniaAPI.DataAccess
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<RentalUnit> RentalUnits { get; set; }
+        public DbSet<Region> Regions { get; set; }
+        public DbSet<Country> Countries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
