@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StaniaAPI.DataAccess;
+using StaniaAPI.Repositories.Abstractions.RentalUnitAbstractions;
+using StaniaAPI.Repositories.Implementations.RentalUnitImplementations;
 using StaniaAPI.Services.Abstractions.RentalUnitAbstractions;
 using StaniaAPI.Services.Implementations.RentalUnitImplementations;
 
@@ -20,6 +22,11 @@ namespace StaniaAPI
         public static void InjectServices(IServiceCollection services)
         {
             services.AddScoped<IRentalUnitService, RentalUnitService>();
+        }
+
+        public static void InjectRepositories(IServiceCollection services)
+        {
+            services.AddScoped<IRentalUnitRepository, RentalUnitRepository>();
         }
     }
 }

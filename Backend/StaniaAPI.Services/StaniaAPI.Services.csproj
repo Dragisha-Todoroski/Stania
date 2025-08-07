@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\StaniaAPI.Domain\StaniaAPI.Domain.csproj" />
     <ProjectReference Include="..\StaniaAPI.Helpers\StaniaAPI.Helpers.csproj" />
+    <ProjectReference Include="..\StaniaAPI.Repositories\StaniaAPI.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

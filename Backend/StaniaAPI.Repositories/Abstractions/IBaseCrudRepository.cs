@@ -12,6 +12,6 @@ namespace StaniaAPI.Repositories.Abstractions
         Task<TEntity?> GetByIdAsync(Guid id);
         Task<TEntity> CreateAsync(TEntity entity);
         Task<TEntity> UpdateAsync(TEntity entity);
-        Task<bool> DeleteAsync(TEntity entity);
+        Task<bool> DeleteAsync(Guid id);
     }
 }

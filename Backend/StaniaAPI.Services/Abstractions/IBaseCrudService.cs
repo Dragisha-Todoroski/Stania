@@ -11,7 +11,7 @@ namespace StaniaAPI.Services.Abstractions
         Task<IEnumerable<TResponse>> GetAllAsync();
         Task<TResponse?> GetByIdAsync(Guid id);
         Task<TResponse> CreateAsync(TAddRequest addRequest);
-        Task<TResponse> UpdateAsync(Guid id, TUpdateRequest updateRequest);
+        Task<TResponse?> UpdateAsync(Guid id, TUpdateRequest updateRequest);
         Task<bool> DeleteAsync(Guid id);
     }
 

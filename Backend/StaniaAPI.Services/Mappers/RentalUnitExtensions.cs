@@ -42,6 +42,35 @@ namespace StaniaAPI.Services.Mappers
             };
         }
 
+        public static RentalUnit ToRentalUnit(this RentalUnitAddRequest addRequest)
+        {
+            if (addRequest == null)
+                throw new ArgumentNullException(nameof(addRequest), "Add request cannot be null");
+
+            return new RentalUnit
+            {
+                Title = addRequest.Title,
+                Description = addRequest.Description,
+                RentalUnitType = addRequest.RentalUnitType!.Value,
+                RentalUnitTerm = addRequest.RentalUnitTerm!.Value,
+                BedroomCount = addRequest.BedroomCount!.Value,
+                BathroomCount = addRequest.BathroomCount!.Value,
+                SquareFootage = addRequest.SquareFootage!.Value,
+                NumOfFloors = addRequest.NumOfFloors,
+                FloorNumber = addRequest.FloorNumber,
+                ParkingOption = addRequest.ParkingOption!.Value,
+                ParkingCost = addRequest.ParkingCost,
+                HasGarage = addRequest.HasGarage,
+                HasGarden = addRequest.HasGarden,
+                RegionId = addRequest.RegionId!.Value,
+                Address = addRequest.Address,
+                Price = addRequest.Price!.Value,
+                Currency = addRequest.Currency!.Value,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            };
+        }
+
         public static void ApplyUpdate(this RentalUnit rentalUnit, RentalUnitUpdateRequest updateRequest)
         {
             if (updateRequest.Title is not null)
@@ -94,6 +123,8 @@ namespace StaniaAPI.Services.Mappers
 
             if (updateRequest.Currency.HasValue)
                 rentalUnit.Currency = updateRequest.Currency.Value;
+
+            rentalUnit.UpdatedAt = DateTime.UtcNow;
         }
     }
 }

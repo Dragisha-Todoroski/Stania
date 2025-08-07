@@ -9,6 +9,5 @@ namespace StaniaAPI.Services.Abstractions.RentalUnitAbstractions
 {
     public interface IRentalUnitService : IBaseCrudService<RentalUnitAddRequest, RentalUnitUpdateRequest, RentalUnitResponse>
     {
-
     }
 }

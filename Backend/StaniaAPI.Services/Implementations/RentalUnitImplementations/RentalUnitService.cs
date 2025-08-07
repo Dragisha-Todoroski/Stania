@@ -1,5 +1,8 @@
-﻿using StaniaAPI.Services.Abstractions.RentalUnitAbstractions;
+﻿using StaniaAPI.Repositories.Abstractions.RentalUnitAbstractions;
+using StaniaAPI.Services.Abstractions.RentalUnitAbstractions;
 using StaniaAPI.Services.DTOs.RentalUnitDTOs;
+using StaniaAPI.Services.Mappers;
+using StaniaAPI.Services.ServiceHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,29 +13,78 @@ namespace StaniaAPI.Services.Implementations.RentalUnitImplementations
 {
     public class RentalUnitService : IRentalUnitService
     {
-        public Task<IEnumerable<RentalUnitResponse>> GetAllAsync()
+        private readonly IRentalUnitRepository _rentalUnitRepository;
+
+        public RentalUnitService(IRentalUnitRepository rentalUnitRepository)
         {
-            throw new NotImplementedException();
+            _rentalUnitRepository = rentalUnitRepository;
         }
 
-        public Task<RentalUnitResponse?> GetByIdAsync(Guid id)
+        public async Task<IEnumerable<RentalUnitResponse>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var rentalUnitList = await _rentalUnitRepository.GetAllAsync();
+
+            return rentalUnitList.Select(x => x.ToRentalUnitResponse()).ToList();
         }
 
-        public Task<bool> DeleteAsync(Guid id)
+        public async Task<RentalUnitResponse?> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            if (id == Guid.Empty)
+                return null;
+
+            var rentalUnit = await _rentalUnitRepository.GetByIdAsync(id);
+
+            if (rentalUnit == null)
+                return null;
+
+            return rentalUnit.ToRentalUnitResponse();
         }
 
-        public Task<RentalUnitResponse> CreateAsync(RentalUnitAddRequest addRequest)
+        public async Task<bool> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            if (id == Guid.Empty)
+                return false;
+
+            var rentalUnit = await _rentalUnitRepository.GetByIdAsync(id);
+
+            if (rentalUnit == null)
+                return false;
+
+            await _rentalUnitRepository.DeleteAsync(id);
+
+            return true;
         }
 
-        public Task<RentalUnitResponse> UpdateAsync(Guid id, RentalUnitUpdateRequest updateRequest)
+        public async Task<RentalUnitResponse> CreateAsync(RentalUnitAddRequest addRequest)
         {
-            throw new NotImplementedException();
+            // Validation
+            ValidationHelper.ModelValidation(addRequest);
+
+            // Conversion to RentalUnit entity
+            var rentalUnit = addRequest.ToRentalUnit();
+            rentalUnit.Id = Guid.NewGuid();
+
+            await _rentalUnitRepository.CreateAsync(rentalUnit);
+
+            return rentalUnit.ToRentalUnitResponse();
+        }
+
+        public async Task<RentalUnitResponse?> UpdateAsync(Guid id, RentalUnitUpdateRequest updateRequest)
+        {
+            // Validation
+            ValidationHelper.ModelValidation(updateRequest);
+
+            var rentalUnit = await _rentalUnitRepository.GetByIdAsync(id);
+
+            if (rentalUnit == null)
+                return null;
+
+            // Apply new changes to RentalUnit entity
+            rentalUnit.ApplyUpdate(updateRequest);
+
+            await _rentalUnitRepository.UpdateAsync(rentalUnit);
+
+            return rentalUnit.ToRentalUnitResponse();
         }
     }
 }
