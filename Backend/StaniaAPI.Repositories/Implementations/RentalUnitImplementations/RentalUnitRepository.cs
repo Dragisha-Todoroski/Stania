@@ -1,4 +1,6 @@
-﻿using StaniaAPI.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using StaniaAPI.DataAccess;
+using StaniaAPI.Domain.Entities;
 using StaniaAPI.Repositories.Abstractions.RentalUnitAbstractions;
 using System;
 using System.Collections.Generic;
@@ -10,29 +12,63 @@ namespace StaniaAPI.Repositories.Implementations.RentalUnitImplementations
 {
     public class RentalUnitRepository : IRentalUnitRepository
     {
-        public Task<RentalUnit> CreateAsync(RentalUnit entity)
+        private readonly ApplicationDbContext _context;
+
+        public RentalUnitRepository(ApplicationDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task<bool> DeleteAsync(Guid id)
+        public async Task<IEnumerable<RentalUnit>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var rentalUnitList = await _context.Set<RentalUnit>()
+                .Include(x => x.Region).ToListAsync();
+
+            return rentalUnitList;
         }
 
-        public Task<IEnumerable<RentalUnit>> GetAllAsync()
+        public async Task<RentalUnit?> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var rentalUnit = await  _context.Set<RentalUnit>()
+                .Include(x => x.Region)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            return rentalUnit;
         }
 
-        public Task<RentalUnit?> GetByIdAsync(Guid id)
+        public async Task<RentalUnit> CreateAsync(RentalUnit rentalUnit)
         {
-            throw new NotImplementedException();
+            await _context.Set<RentalUnit>().AddAsync(rentalUnit);
+            await _context.SaveChangesAsync();
+
+            return rentalUnit;
         }
 
-        public Task<RentalUnit> UpdateAsync(RentalUnit entity)
+        public async Task<RentalUnit?> UpdateAsync(RentalUnit rentalUnit)
         {
-            throw new NotImplementedException();
+            var dbRentalUnit = await _context.Set<RentalUnit>().FirstOrDefaultAsync(x => x.Id == rentalUnit.Id);
+
+            // Should never trigger with GetByIdAsync being called prior in the Services layer (therefore no double null check there)
+            if (dbRentalUnit == null)
+                return null;
+
+            _context.Entry(dbRentalUnit).CurrentValues.SetValues(rentalUnit);
+            await _context.SaveChangesAsync();
+
+            return dbRentalUnit;
+        }
+
+        public async Task<bool> DeleteAsync(Guid id)
+        {
+            var dbRentalUnit = await _context.Set<RentalUnit>().FirstOrDefaultAsync(x => x.Id == id);
+
+            if (dbRentalUnit == null)
+                return false;
+
+            _context.Set<RentalUnit>().Remove(dbRentalUnit);
+
+            return await _context.SaveChangesAsync() > 0;
+
         }
     }
 }

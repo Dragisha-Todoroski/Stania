@@ -9,6 +9,6 @@ namespace StaniaAPI.Repositories.Abstractions.RentalUnitAbstractions
 {
     public interface IRentalUnitRepository : IBaseCrudRepository<RentalUnit>
     {
-        
+
     }
 }

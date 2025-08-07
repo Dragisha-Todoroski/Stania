@@ -49,23 +49,24 @@ namespace StaniaAPI.Services.Mappers
 
             return new RentalUnit
             {
+                Id = Guid.NewGuid(),
                 Title = addRequest.Title,
                 Description = addRequest.Description,
-                RentalUnitType = addRequest.RentalUnitType!.Value,
-                RentalUnitTerm = addRequest.RentalUnitTerm!.Value,
-                BedroomCount = addRequest.BedroomCount!.Value,
-                BathroomCount = addRequest.BathroomCount!.Value,
-                SquareFootage = addRequest.SquareFootage!.Value,
+                RentalUnitType = addRequest.RentalUnitType ?? throw new ArgumentNullException(nameof(addRequest.RentalUnitType)),
+                RentalUnitTerm = addRequest.RentalUnitTerm ?? throw new ArgumentNullException(nameof(addRequest.RentalUnitType)),
+                BedroomCount = addRequest.BedroomCount ?? throw new ArgumentNullException(nameof(addRequest.RentalUnitType)),
+                BathroomCount = addRequest.BathroomCount ?? throw new ArgumentNullException(nameof(addRequest.RentalUnitType)),
+                SquareFootage = addRequest.SquareFootage ?? throw new ArgumentNullException(nameof(addRequest.RentalUnitType)),
                 NumOfFloors = addRequest.NumOfFloors,
                 FloorNumber = addRequest.FloorNumber,
-                ParkingOption = addRequest.ParkingOption!.Value,
+                ParkingOption = addRequest.ParkingOption ?? throw new ArgumentNullException(nameof(addRequest.RentalUnitType)),
                 ParkingCost = addRequest.ParkingCost,
                 HasGarage = addRequest.HasGarage,
                 HasGarden = addRequest.HasGarden,
-                RegionId = addRequest.RegionId!.Value,
+                RegionId = addRequest.RegionId ?? throw new ArgumentNullException(nameof(addRequest.RentalUnitType)),
                 Address = addRequest.Address,
-                Price = addRequest.Price!.Value,
-                Currency = addRequest.Currency!.Value,
+                Price = addRequest.Price ?? throw new ArgumentNullException(nameof(addRequest.RentalUnitType)),
+                Currency = addRequest.Currency ?? throw new ArgumentNullException(nameof(addRequest.RentalUnitType)),
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow
             };

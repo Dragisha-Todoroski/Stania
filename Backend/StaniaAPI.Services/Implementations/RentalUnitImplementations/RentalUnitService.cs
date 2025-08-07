@@ -40,21 +40,6 @@ namespace StaniaAPI.Services.Implementations.RentalUnitImplementations
             return rentalUnit.ToRentalUnitResponse();
         }
 
-        public async Task<bool> DeleteAsync(Guid id)
-        {
-            if (id == Guid.Empty)
-                return false;
-
-            var rentalUnit = await _rentalUnitRepository.GetByIdAsync(id);
-
-            if (rentalUnit == null)
-                return false;
-
-            await _rentalUnitRepository.DeleteAsync(id);
-
-            return true;
-        }
-
         public async Task<RentalUnitResponse> CreateAsync(RentalUnitAddRequest addRequest)
         {
             // Validation
@@ -62,7 +47,6 @@ namespace StaniaAPI.Services.Implementations.RentalUnitImplementations
 
             // Conversion to RentalUnit entity
             var rentalUnit = addRequest.ToRentalUnit();
-            rentalUnit.Id = Guid.NewGuid();
 
             await _rentalUnitRepository.CreateAsync(rentalUnit);
 
@@ -85,6 +69,21 @@ namespace StaniaAPI.Services.Implementations.RentalUnitImplementations
             await _rentalUnitRepository.UpdateAsync(rentalUnit);
 
             return rentalUnit.ToRentalUnitResponse();
+        }
+
+        public async Task<bool> DeleteAsync(Guid id)
+        {
+            if (id == Guid.Empty)
+                return false;
+
+            var rentalUnit = await _rentalUnitRepository.GetByIdAsync(id);
+
+            if (rentalUnit == null)
+                return false;
+
+            await _rentalUnitRepository.DeleteAsync(id);
+
+            return true;
         }
     }
 }
