@@ -28,7 +28,7 @@ namespace StaniaAPI.Repositories.Implementations.CountryImplementations
 
         public async Task<Country?> GetByIdAsync(Guid id)
         {
-            var country = await _context.Set<Country>().FirstOrDefaultAsync(x => x.Id == id);
+            var country = await _context.Set<Country>().FindAsync(id);
 
             return country;
         }
@@ -43,7 +43,7 @@ namespace StaniaAPI.Repositories.Implementations.CountryImplementations
 
         public async Task<Country?> UpdateAsync(Country country)
         {
-            var dbCountry = await _context.Set<Country>().FirstOrDefaultAsync(x => x.Id == country.Id);
+            var dbCountry = await _context.Set<Country>().FindAsync(country.Id);
 
             // Should never trigger with GetByIdAsync being called prior in the Services layer (therefore no double null check there)
             if (dbCountry == null)
@@ -57,7 +57,7 @@ namespace StaniaAPI.Repositories.Implementations.CountryImplementations
 
         public async Task<bool> DeleteAsync(Guid id)
         {
-            var dbCountry = await _context.Set<Country>().FirstOrDefaultAsync(x => x.Id == id);
+            var dbCountry = await _context.Set<Country>().FindAsync(id);
 
             if (dbCountry == null)
                 return false;

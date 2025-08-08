@@ -46,7 +46,7 @@ namespace StaniaAPI.Repositories.Implementations.RentalUnitImplementations
 
         public async Task<RentalUnit?> UpdateAsync(RentalUnit rentalUnit)
         {
-            var dbRentalUnit = await _context.Set<RentalUnit>().FirstOrDefaultAsync(x => x.Id == rentalUnit.Id);
+            var dbRentalUnit = await _context.Set<RentalUnit>().FindAsync(rentalUnit.Id);
 
             // Should never trigger with GetByIdAsync being called prior in the Services layer (therefore no double null check there)
             if (dbRentalUnit == null)
@@ -60,7 +60,7 @@ namespace StaniaAPI.Repositories.Implementations.RentalUnitImplementations
 
         public async Task<bool> DeleteAsync(Guid id)
         {
-            var dbRentalUnit = await _context.Set<RentalUnit>().FirstOrDefaultAsync(x => x.Id == id);
+            var dbRentalUnit = await _context.Set<RentalUnit>().FindAsync(id);
 
             if (dbRentalUnit == null)
                 return false;

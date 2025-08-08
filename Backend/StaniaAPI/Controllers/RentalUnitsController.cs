@@ -20,6 +20,7 @@ namespace StaniaAPI.Controllers
             _rentalUnitService = rentalUnitService;
         }
 
+        // GET: api/v1/RentalUnits
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
@@ -28,6 +29,7 @@ namespace StaniaAPI.Controllers
             return Ok(rentalUnitList);
         }
 
+        // GET: api/v1/RentalUnits/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(Guid id)
         {
@@ -39,6 +41,7 @@ namespace StaniaAPI.Controllers
             return Ok(rentalUnit);
         }
 
+        // POST: api/v1/RentalUnits
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromBody] RentalUnitAddRequest addRequest)
         {
@@ -47,6 +50,7 @@ namespace StaniaAPI.Controllers
             return CreatedAtAction(nameof(GetByIdAsync), new { id = createdRentalUnit.Id }, createdRentalUnit);
         }
 
+        // PUT: api/v1/RentalUnits/5
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAsync(Guid id, [FromBody] RentalUnitUpdateRequest updateRequest)
         {
@@ -58,6 +62,7 @@ namespace StaniaAPI.Controllers
             return Ok(updatedRentalUnit);
         }
 
+        // DELETE: api/v1/RentalUnits/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
