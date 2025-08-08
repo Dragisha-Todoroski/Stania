@@ -76,14 +76,7 @@ namespace StaniaAPI.Services.Implementations.RentalUnitImplementations
             if (id == Guid.Empty)
                 return false;
 
-            var rentalUnit = await _rentalUnitRepository.GetByIdAsync(id);
-
-            if (rentalUnit == null)
-                return false;
-
-            await _rentalUnitRepository.DeleteAsync(id);
-
-            return true;
+            return await _rentalUnitRepository.DeleteAsync(id);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace StaniaAPI.Services.DTOs.RentalUnitDTOs
         [Required(ErrorMessage = "{0} is required.")]
         [MinLength(1, ErrorMessage = "{0} must not be empty.")]
         [StringLength(300, ErrorMessage = "{0} can't be longer than 300 characters.")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [MinLength(1, ErrorMessage = "{0} must not be empty.")]
         [StringLength(1000, ErrorMessage = "{0} can't be longer than 1000 characters.")]

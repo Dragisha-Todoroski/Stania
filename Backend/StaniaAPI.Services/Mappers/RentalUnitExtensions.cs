@@ -50,7 +50,7 @@ namespace StaniaAPI.Services.Mappers
             return new RentalUnit
             {
                 Id = Guid.NewGuid(),
-                Title = addRequest.Title,
+                Title = addRequest.Title!,
                 Description = addRequest.Description,
                 RentalUnitType = addRequest.RentalUnitType ?? throw new ArgumentNullException(nameof(addRequest.RentalUnitType)),
                 RentalUnitTerm = addRequest.RentalUnitTerm ?? throw new ArgumentNullException(nameof(addRequest.RentalUnitType)),

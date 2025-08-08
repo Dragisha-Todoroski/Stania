@@ -16,5 +16,8 @@ namespace StaniaAPI.Domain.Entities
         [Column(TypeName = "varchar(75)")]
         public string Name { get; set; } = string.Empty;
         public ICollection<Region>? Regions { get; set; } = new List<Region>();
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }
