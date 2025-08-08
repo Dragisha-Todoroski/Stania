@@ -68,7 +68,6 @@ namespace StaniaAPI.Repositories.Implementations.RentalUnitImplementations
             _context.Set<RentalUnit>().Remove(dbRentalUnit);
 
             return await _context.SaveChangesAsync() > 0;
-
         }
     }
 }
