@@ -35,7 +35,7 @@ namespace StaniaAPI.Middlewares
             var response = new
             {
                 statusCode = context.Response.StatusCode,
-                errorMessage = env.IsDevelopment() ? ex.Message : "Internal server error",
+                errorMessage = "Internal server error",
             };
 
             var json = JsonSerializer.Serialize(response);
