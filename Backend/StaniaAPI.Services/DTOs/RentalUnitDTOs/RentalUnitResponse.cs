@@ -31,7 +31,10 @@ namespace StaniaAPI.Services.DTOs.RentalUnitDTOs
         [Display(Name = "Square footage")]
         public int SquareFootage { get; set; }
 
+        [Display(Name = "Number of floors")]
         public int? NumOfFloors { get; set; }
+
+        [Display(Name = "Floor number")]
         public int? FloorNumber { get; set; }
 
         [Display(Name = "Parking option")]
@@ -39,7 +42,11 @@ namespace StaniaAPI.Services.DTOs.RentalUnitDTOs
 
         [Display(Name = "Parking cost")]
         public ParkingCost? ParkingCost { get; set; }
+
+        [Display(Name = "Has garage?")]
         public bool? HasGarage { get; set; }
+
+        [Display(Name = "Has garden?")]
         public bool? HasGarden { get; set; }
 
         public Guid RegionId { get; set; }
