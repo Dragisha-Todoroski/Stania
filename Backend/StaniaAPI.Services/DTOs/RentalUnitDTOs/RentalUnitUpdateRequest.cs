@@ -52,6 +52,8 @@ namespace StaniaAPI.Services.DTOs.RentalUnitDTOs
 
         public bool? HasGarage { get; set; }
         public bool? HasGarden { get; set; }
+
+        [Required(ErrorMessage = "Region is required.")]
         public Guid? RegionId { get; set; }
 
         [MinLength(1, ErrorMessage = "{0} must not be empty.")]

@@ -11,12 +11,16 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StaniaAPI.Services.DTOs.CountryDTOs
+namespace StaniaAPI.Services.DTOs.RegionDTOs
 {
-    public class CountryResponse
+    public class RegionResponse
     {
         public Guid Id { get; set; }
         public string? Name { get; set; }
+        public Guid CountryId { get; set; }
+
+        [Display(Name = "Country name")]
+        public string? CountryName { get; set; } // Using name for client readability; Data filled with, e.g. region.Country.Name
 
         [Display(Name = "Created at")]
         public DateTime CreatedAt { get; set; }
@@ -26,12 +30,14 @@ namespace StaniaAPI.Services.DTOs.CountryDTOs
 
         public override bool Equals(object? obj)
         {
-            if (obj == null || obj.GetType() != typeof(CountryResponse)) return false;
+            if (obj == null || obj.GetType() != typeof(RegionResponse)) return false;
 
-            var other = (CountryResponse)obj;
+            var other = (RegionResponse)obj;
 
             return Id == other.Id &&
                    Name == other.Name &&
+                   CountryId == other.CountryId &&
+                   CountryName == other.CountryName &&
                    CreatedAt == other.CreatedAt &&
                    UpdatedAt == other.UpdatedAt;
         }

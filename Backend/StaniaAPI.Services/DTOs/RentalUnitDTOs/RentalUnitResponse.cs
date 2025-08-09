@@ -12,7 +12,6 @@ namespace StaniaAPI.Services.DTOs.RentalUnitDTOs
     public class RentalUnitResponse
     {
         public Guid Id { get; set; }
-
         public string? Title { get; set; }
         public string? Description { get; set; }
 
@@ -48,14 +47,11 @@ namespace StaniaAPI.Services.DTOs.RentalUnitDTOs
 
         [Display(Name = "Has garden?")]
         public bool? HasGarden { get; set; }
-
         public Guid RegionId { get; set; }
 
         [Display(Name = "Region name")]
         public string? RegionName { get; set; } // Using name for client readability; Data filled with, e.g. rentalUnit.Region.Name
-
         public string Address { get; set; } = string.Empty;
-
         public decimal Price { get; set; }
         public Currency Currency { get; set; }
 
