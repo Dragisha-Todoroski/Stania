@@ -48,11 +48,11 @@ export default function HeroDesign() {
 
 
   return (
-    <section className="hero relative max-h-dvh z-20">
-      <div className="hero-video__wrapper ">
+    <section className="hero relative max-h-dvh">
+      <div className="hero-video__wrapper">
         <video
           ref={videoRef}
-          className="w-full h-screen fixed object-cover top-0 left-0 transition-opacity duration-500"
+          className="w-auto max-h-[1000px] h-screen overflow-y-hidden fixed top-0 left-0 object-cover transition-opacity duration-500"
           src="/videos/hero-video.webm"
           autoPlay
           loop
