@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import HeroSection from '@/components/layout/HeaderSection';
 import TopProp from '@/components/layout/TopProp';
+import PropType from '@/components/layout/PropType';
 
 export const metadata: Metadata = {
  title: 'Stania',
@@ -14,6 +15,7 @@ export default function Home() {
   <>
    <HeroSection />
    <TopProp />
+   <PropType/>
   </>
  );
 }
