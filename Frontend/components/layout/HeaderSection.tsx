@@ -59,7 +59,7 @@ export default function HeroSection() {
      muted
     ></video>
    </div>
-      <div className="min-h-dvh flex items-center justify-center bg-black/20 relative w-full h-dvh z-10 px-4">
+      <div className="min-h-dvh flex items-center justify-center bg-black/40 relative w-full h-dvh z-10 px-4">
         <div
           ref={contentRef}
           className="hero__content wrapper relative text-center flex flex-col items-center justify-center lg:gap-32 sm:gap-16 gap-8 py-2"
