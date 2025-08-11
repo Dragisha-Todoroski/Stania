@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-export default function HeroSection() {
+export default function HeroDesign() {
   const contentRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [fading, setFading] = useState<boolean>(false);
@@ -49,31 +49,33 @@ export default function HeroSection() {
 
   return (
     <section className="hero relative max-h-dvh">
-      <div className='hero-video__wrapper max-h-screen h-ful'>
-    <video
-     ref={videoRef}
-     className='w-full max-h-screen h-full absolute object-cover top-0 left-0 transition-opacity duration-500'
-     src='/videos/hero-video.webm'
-     autoPlay
-     loop
-     muted
-    ></video>
-   </div>
-      <div className="min-h-dvh flex items-center justify-center bg-black/20 relative w-full h-dvh z-10">
+      <div className="hero-video__wrapper">
+        <video
+          ref={videoRef}
+          className="w-auto max-h-[1000px] h-screen overflow-y-hidden fixed top-0 left-0 object-cover transition-opacity duration-500"
+          src="/videos/hero-video.webm"
+          autoPlay
+          loop
+          muted
+        ></video>
+      </div>
+      <div className="min-h-dvh flex items-center justify-center bg-black/20 relative w-full h-dvh">
         <div
           ref={contentRef}
-          className="hero__content wrapper relative text-center flex flex-col items-center justify-center lg:gap-32 sm:gap-16 gap-8 py-2"
+          className="hero__content wrapper relative text-center flex flex-col items-center lg:gap-32 sm:gap-16 gap-8 py-2"
         >
-          <h2 className={`lg:text-7xl sm:text-6xl text-5xl font-bold flex flex-col transition-all duration-1000 ease-in-out ${isModalOpen ? "opacity-70 xs:-translate-y-4 -translate-y-36":"opacity-100 translate-y-0"}`}>
+          <h2 className="lg:text-7xl sm:text-6xl text-5xl font-bold flex flex-col">
             <span>Find Your</span>
             <span>Perfect Space</span>
           </h2>
-        
-          <div className='herosection_search_button flex flex-col justify-center items-center lg:h-[100px] xs:h-[200px] h-[100px] max-w-[600px] w-full lg:max-w-full'>
-            <div className={`herosection_searchbar z-10 flex lg:flex-row flex-col content-center bg-gray-50 py-4 lg:gap-0 xs:gap-10 gap-8 px-4 rounded-lg w-full lg:w-max lg:max-w-full max-w-[800px] transition-all ease-in-out duration-1000 ${isModalOpen ? 'opacity-100 pointer-event-auto translate-w-0' :'opacity-0 pointer-events-none translate-w-full'}`}>
-              <div className='herosection_input_row flex xs:flex-row flex-col w-full lg:w-max lg:gap-0 xs:gap-10 gap-8'>
+          {!isModalOpen && (
+            <button onClick={()=>setIsModalOpen(true)} className='bg-orange-600 text-white text-lg rounded-md px-12 py-4 sm:w-max w-full cursor-pointer'>Start searching</button>
+          )}
+          {isModalOpen && (
+            <div className="herosection_searchbar z-10 flex lg:flex-row flex-col content-center bg-gray-50 py-4 lg:gap-0 gap-8 px-4 rounded-lg w-full max-w-[600px] lg:max-w-full">
+              <div className='herosection_input_row flex w-full lg:gap-0 md:gap-8 gap-2'>
               {/* Location Input*/}
-              <div className='flex flex-col gap-4 xl:min-w-[240px] lg:min-w-[180px] lg:text-lg md:text-base w-full'>
+              <div className='flex flex-col gap-4 xl:min-w-[200px] lg:min-w-[160px] lg:text-lg md:text-base w-full'>
                 <label className='text-gray-800 font-semibold'>Location</label>
                 <select
                   id="location"
@@ -90,7 +92,7 @@ export default function HeroSection() {
                 </select>
               </div>
               {/* Adults */}
-              <div className='flex flex-col gap-4 xl:min-w-[240px] lg:min-w-[180px] lg:text-lg md:text-base w-full'>
+              <div className='flex flex-col gap-4 xl:min-w-[200px] lg:min-w-[160px] lg:text-lg md:text-base w-full'>
                 <label className=" text-gray-800 font-semibold">Adults</label>
                 <select
                   value={adults}
@@ -105,9 +107,9 @@ export default function HeroSection() {
                 </select>
               </div>
               </div>
-              <div className='herosection_input_row flex lg:gap-0 md:gap-8 xs:gap-10 gap-8 xs:flex-row flex-col'>
+              <div className='herosection_input_row flex lg:gap-0 md:gap-8 gap-2'>
               {/* Check-in*/}
-              <div className='flex flex-col gap-4 xl:min-w-[240px] lg:min-w-[180px] content-center lg:text-lg md:text-base w-full lg:w-max'>
+              <div className='flex flex-col gap-4 xl:min-w-[200px] lg:min-w-[160px] content-center lg:text-lg md:text-base xs:text-sm w-full'>
                 <label className="text-gray-800 font-semibold self-center">Check-in</label>
                 <input
                   type="date"
@@ -116,7 +118,7 @@ export default function HeroSection() {
                 />
               </div>
               {/* Check-out*/}
-              <div className='flex flex-col gap-4 xl:min-w-[240px] lg:min-w-[180px] content-center lg:text-lg md:text-base w-full'>
+              <div className='flex flex-col gap-4 xl:min-w-[200px] lg:min-w-[160px] content-center lg:text-lg md:text-base w-full'>
                 <label className="text-gray-800 font-semibold self-center">Check-out</label>
                 <input
                   type="date"
@@ -125,20 +127,17 @@ export default function HeroSection() {
                 />
               </div>
               </div>
-              <div className='xl:min-w-[240px] lg:min-w-[180px] flex justify-center items-center'>
-                <button onClick={()=>setIsModalOpen((prev)=>!prev)} className='py-4 xs:px-12 sm:w-max w-full rounded-sm bg-[#D57800] font-medium cursor-pointer '>Search</button>
+              <div className='xl:min-w-[200px] lg:min-w-[160px] flex justify-center items-center'>
+                <button className='py-4 lg:px-12 lg:w-max w-full rounded-sm bg-orange-600 text-lg cursor-pointer '>Search</button>
                 </div>
               
-              
             </div>
-          {!isModalOpen&&(
-<button onClick={()=>setIsModalOpen(true)} className='py-4 xs:px-12 sm:w-max w-full rounded-sm bg-[#D57800] font-medium cursor-pointer absolute bottom-50%'>Get started</button>
-              )}
+          )}
           
-        </div></div>
-            
+        </div>
         
       </div>
+<div className='bg-amber-600'>hello</div>
     </section>
   );
 }
