@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import Hero from '@/components/layout/Hero';
+// import Hero from '@/components/layout/Hero';
+import HeroSection from '@/components/layout/HeaderSection';
 import Listings from '@/components/layout/Listings';
 
 export const metadata: Metadata = {
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 export default function Home() {
  return (
   <>
-   <Hero />
+   <HeroSection />
    <Listings />
   </>
  );
