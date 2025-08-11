@@ -1,8 +1,8 @@
 body {
- @apply bg-[#fcfcfe] text-[#E5E7EB];
+ @apply bg-[#fefefe] text-[#E5E7EB];
 }
 .wrapper {
-  @apply max-w-[1880px] w-full mx-auto px-4 md:px-5;
+  @apply max-w-[1400px] w-full mx-auto px-4 md:px-5;
 }
 .title {
   @apply font-semibold text-3xl;

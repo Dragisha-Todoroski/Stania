@@ -1,4 +1,3 @@
-// import AlisaPropertyImg from '../../assets/Old Alisa_Property.png';
 export default function TopProp() {
   const listContent = [
     {
@@ -39,7 +38,7 @@ export default function TopProp() {
     },
   ];
   return (
-    <section className="topprop my-6">
+    <section className="topprop my-10">
       <div className="wrapper">
         <div className="toprop_content flex flex-col gap-10">
           <div className="toprpop_header flex flex-col gap-3">
