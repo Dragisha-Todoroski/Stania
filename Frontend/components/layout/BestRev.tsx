@@ -42,30 +42,30 @@ export default function BestRev() {
     },
   ];
   return (
-    <section className="topprop my-10">
+    <section className="bestrev my-10">
       <div className="wrapper">
-        <div className="toprop_content flex flex-col gap-10">
-          <div className="toprpop_header flex flex-col gap-3">
+        <div className="bestrev_content flex flex-col gap-10">
+          <div className="bestrev_header flex flex-col gap-3">
             <h3 className="text-gray-800 lg:text-4xl md:text-3xl xs:text-2xl text-xl font-semibold">
               Best reviewed
             </h3>
           </div>
 
-          <div className="topprop_list grid lg:grid-cols-4 md:gap-6 xs:grid-cols-2 gap-4 grid-cols-1">
+          <div className="bestrev_list grid lg:grid-cols-4 md:gap-6 xs:grid-cols-2 gap-4 grid-cols-1">
             {listContent.map(
-              ({ id, imgsrc, alt, title, location, grade, reviews,price }) => (
+              ({ id, imgsrc, alt, title, location, grade, reviews, price }) => (
                 <div
-                  className="topprop_list_item  rounded-xl overflow-clip h-full drop-shadow-md"
+                  className="bestrev_list_item  rounded-xl overflow-clip h-full drop-shadow-md"
                   key={id}
                 >
                   <img
                     loading="lazy"
                     src={imgsrc}
                     alt={alt}
-                    className="projects_element_image w-full"
+                    className="bestrev_element_image w-full"
                   />
-                  <div className="toprpop_item_text flex flex-col bg-[#F6F6F6] xs:px-6 xs:pb-8 xs:pt-4 px-4 pb-6 pt-2 lg:h-[240px] xs:h-[190px] h-max justify-between">
-                    <div className='toprop_item_upper_text flex flex-col h-full gap-3 '>
+                  <div className="bestrev_item_text flex flex-col bg-[#F6F6F6] xs:px-6 xs:pb-8 xs:pt-4 px-4 pb-6 pt-2 lg:h-[240px] xs:h-[190px] h-max justify-between">
+                    <div className='bestrev_item_upper_text flex flex-col h-full gap-3 '>
                     <h5 className="lg:text-2xl md:text-xl xs:text-lg font-bold text-gray-800">
                       {title}
                     </h5>
