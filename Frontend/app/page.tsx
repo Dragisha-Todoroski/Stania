@@ -3,6 +3,7 @@ import HeroSection from '@/components/layout/HeaderSection';
 import TopProp from '@/components/layout/TopProp';
 import PropType from '@/components/layout/PropType';
 import BestRev from '@/components/layout/BestRev';
+import PopularDest from '@/components/layout/PopularDest';
 
 export const metadata: Metadata = {
  title: 'Stania',
@@ -18,6 +19,7 @@ export default function Home() {
    <TopProp />
    <PropType/>
    <BestRev/>
+   <PopularDest/>
   </>
  );
 }
