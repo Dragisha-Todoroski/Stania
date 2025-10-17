@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 // import AlisaPropertyImg from '../../assets/Old Alisa_Property.png';
+=======
+>>>>>>> cf85bdc3e2dee5a8cee6dfd68c39faa3fbab567f
 export default function TopProp() {
   const listContent = [
     {
@@ -39,7 +42,11 @@ export default function TopProp() {
     },
   ];
   return (
+<<<<<<< HEAD
     <section className="topprop my-6">
+=======
+    <section className="topprop my-10">
+>>>>>>> cf85bdc3e2dee5a8cee6dfd68c39faa3fbab567f
       <div className="wrapper">
         <div className="toprop_content flex flex-col gap-10">
           <div className="toprpop_header flex flex-col gap-3">
@@ -89,4 +96,8 @@ export default function TopProp() {
       </div>
     </section>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> cf85bdc3e2dee5a8cee6dfd68c39faa3fbab567f

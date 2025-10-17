@@ -49,6 +49,7 @@ export default function HeroDesign() {
 
   return (
     <section className="hero relative max-h-dvh">
+<<<<<<< HEAD
       <div className="hero-video__wrapper">
         <video
           ref={videoRef}
@@ -60,11 +61,28 @@ export default function HeroDesign() {
         ></video>
       </div>
       <div className="min-h-dvh flex items-center justify-center bg-black/20 relative w-full h-dvh">
+=======
+      <div className='hero-video__wrapper max-h-screen h-ful'>
+    <video
+     ref={videoRef}
+     className='w-full max-h-screen h-full absolute object-cover top-0 left-0 transition-opacity duration-500'
+     src='/videos/hero-video.webm'
+     autoPlay
+     loop
+     muted
+    ></video>
+   </div>
+      <div className="min-h-dvh flex items-center justify-center bg-black/40 relative w-full h-dvh z-10 px-4">
+>>>>>>> cf85bdc3e2dee5a8cee6dfd68c39faa3fbab567f
         <div
           ref={contentRef}
           className="hero__content wrapper relative text-center flex flex-col items-center lg:gap-32 sm:gap-16 gap-8 py-2"
         >
+<<<<<<< HEAD
           <h2 className="lg:text-7xl sm:text-6xl text-5xl font-bold flex flex-col">
+=======
+          <h2 className={`lg:text-7xl sm:text-6xl text-5xl font-bold flex flex-col transition-all duration-1000 ease-in-out ${isModalOpen ? "opacity-70 xs:-translate-y-4 -translate-y-40":"opacity-100 translate-y-0"}`}>
+>>>>>>> cf85bdc3e2dee5a8cee6dfd68c39faa3fbab567f
             <span>Find Your</span>
             <span>Perfect Space</span>
           </h2>

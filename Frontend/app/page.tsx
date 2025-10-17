@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
-// import Hero from '@/components/layout/Hero';
 import HeroSection from '@/components/layout/HeaderSection';
 import TopProp from '@/components/layout/TopProp';
-import Listings from '@/components/layout/Listings';
+import PropType from '@/components/layout/PropType';
+import BestRev from '@/components/layout/BestRev';
+import PopularDest from '@/components/layout/PopularDest';
 
 export const metadata: Metadata = {
  title: 'Stania',
@@ -14,11 +15,11 @@ export const metadata: Metadata = {
 export default function Home() {
  return (
   <>
-  
-   {/* <Hero /> */}
-   <HeroSection/>
-   <TopProp/>
-   {/* <Listings /> */}
+   <HeroSection />
+   <TopProp />
+   <PropType/>
+   <BestRev/>
+   <PopularDest/>
   </>
  );
 }
