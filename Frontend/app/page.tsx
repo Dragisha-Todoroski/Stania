@@ -11,13 +11,12 @@ export const metadata: Metadata = {
  icons: '/icons/navigation/sailboat.svg',
 };
 
-
 export default function Home() {
  return (
   <>
    <HeroSection />
    <TopProp />
-   <PropType/>
+   <PropType/> 
    <BestRev/>
    <PopularDest/>
   </>
